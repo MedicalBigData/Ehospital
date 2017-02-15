@@ -1,25 +1,66 @@
-<ion-content padding>
+<ion-content >
+  <div class="home_img">
+</div>
   <div class="home_head">
      <ion-row>
-    <ion-col width-50><ion-icon name="paper"></ion-icon></ion-col>
-    <ion-col width-50><ion-icon name="man"></ion-icon></ion-col>
+       <ion-col width-50><button ion-button icon-left clear color="secondary"><ion-icon name="paper"></ion-icon><span>日常记录</span></button></ion-col>
+       <ion-col class="middle_line" width-50><button ion-button icon-left clear color="danger"><ion-icon name="man"></ion-icon><span>健康指导</span></button></ion-col>
      </ion-row>
   </div>
-  
-  
+  <!--天气-->
+  <div class="home_wheather">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-10><ion-icon name="sunny"></ion-icon></ion-col>
+        <ion-col width-10>6`C</ion-col>
+        <ion-col width-20>晴转多云<br>郑州市</ion-col>
+        <ion-col width-20>197</ion-col>
+        <ion-col width-20>PM2.5<br>重度污染</ion-col>
+        <ion-col width-20><ion-icon name="pin"></ion-icon></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!--广告位轮播图-->
   <ion-slides pager>
 
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
+  <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
+    <h2>广告 1</h2>
   </ion-slide>
 
-  <ion-slide style="background-color: blue">
-    <h2>Slide 2</h2>
+  <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
+    <h2>广告 2</h2>
   </ion-slide>
 
-  <ion-slide style="background-color: red">
-    <h2>Slide 3</h2>
+  <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
+    <h2>广告 3</h2>
   </ion-slide>
 
 </ion-slides>
+<!--常见慢性病-->
+<div class="common_diseases">
+  <span>常见慢性病</span>
+  <ion-grid>
+      <ion-row>
+        <ion-col width-20><ion-icon name="pin"></ion-icon><br>高血压</ion-col>
+        <ion-col width-20><ion-icon name="pin"></ion-icon><br>高血脂</ion-col>
+        <ion-col width-20><ion-icon name="pin"></ion-icon><br>糖尿病</ion-col>
+        <ion-col width-20><ion-icon name="pin"></ion-icon><br>冠心病</ion-col>
+        <ion-col width-20><ion-icon name="pin"></ion-icon><br>心脏病</ion-col>
+      </ion-row>
+    </ion-grid>
+</div>
+<!--资讯-->
+<div class="health_news">
+  <span>健康资讯</span>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="../../assets/img/hospital.jpg">
+      </ion-thumbnail>
+      <h2>心脏最爱的5类食物，长寿的人都吃过</h2>
+      <p>健康饮食</p>
+      <span>02/10 10:53</span>
+    </ion-item>
+  </ion-list>
+</div>
 </ion-content>

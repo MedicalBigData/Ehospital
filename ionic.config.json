@@ -2,5 +2,11 @@
   "name": "myAwesomeApp",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://ehome.staging.topmd.cn:81/webservices/ehomewebservice.asmx"
+    }
+  ]
 }

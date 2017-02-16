@@ -12,10 +12,10 @@
     <ion-grid>
       <ion-row>
         <ion-col width-10><ion-icon name="sunny"></ion-icon></ion-col>
-        <ion-col width-10>{{Weather?.currenttemperature}}</ion-col>
-        <ion-col width-20>{{Weather?.weather}}<br>{{Weather?.currentCity}}</ion-col>
-        <ion-col width-20>{{Weather?.pm}}</ion-col>
-        <ion-col width-20>PM2.5<br>{{Weather?.pm|pm}}</ion-col>
+        <ion-col width-10>6`C</ion-col>
+        <ion-col width-20>晴转多云<br>郑州市</ion-col>
+        <ion-col width-20>197</ion-col>
+        <ion-col width-20>PM2.5<br>重度污染</ion-col>
         <ion-col width-20><ion-icon name="pin"></ion-icon></ion-col>
       </ion-row>
     </ion-grid>
@@ -52,14 +52,14 @@
 <!--资讯-->
 <div class="health_news">
   <span>健康资讯</span>
-  <ion-list >
-    <ion-item *ngFor="let new of News" (click)="new_detail(new.ID)">
+  <ion-list>
+    <ion-item>
       <ion-thumbnail item-left>
         <img src="../../assets/img/hospital.jpg">
       </ion-thumbnail>
-      <h2>{{new.Title}}</h2>
-      <p>{{new.Zhaiyao}}</p>
-      <span>{{new.CreatedDate}}</span>
+      <h2>心脏最爱的5类食物，长寿的人都吃过</h2>
+      <p>健康饮食</p>
+      <span>02/10 10:53</span>
     </ion-item>
   </ion-list>
 </div>

@@ -7,9 +7,6 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import { DetailPage } from '../pages/detail/detail';
-import { RegisterPage } from '../pages/register/register';
-import { Pm } from '../pipes/pm';
 
 @NgModule({
   declarations: [
@@ -18,14 +15,10 @@ import { Pm } from '../pipes/pm';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    DetailPage,
-    RegisterPage,
-    Pm
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
-    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,9 +27,7 @@ import { Pm } from '../pipes/pm';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    DetailPage,
-    RegisterPage
+    LoginPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage]
 })

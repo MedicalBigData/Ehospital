@@ -13,15 +13,16 @@ import 'rxjs/add/operator/map';
 export class MyData {
 
   constructor(public http: Http) {
-
+    console.log('Hello MyData Provider');
   }
   connect(Url: string, str: String): Observable<any>{
       let header = new Headers;
+      header.append('Access-Control-Allow-Origin','*');
       header.append('Content-Type','application/x-www-form-urlencoded');
       let opt: RequestOptions = new RequestOptions({
        headers: header
       })   
-    
+      
       return this.http.post(Url, str, opt )
                     .map(res => 
                         eval('(' + this.delHtmlTag(res.text()) + ')')//转化为obj对象格式

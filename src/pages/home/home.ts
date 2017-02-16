@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { NavController, NavParams } from 'ionic-angular';
 
-import { DetailPage } from '../../pages/detail/detail';
+import { NavController } from 'ionic-angular';
 import { MyData } from '../../providers/my-data';
 
 @Component({
@@ -11,38 +9,22 @@ import { MyData } from '../../providers/my-data';
   providers: [ MyData ]
 })
 export class HomePage implements OnInit{
-  public News: any;
-  public Weather: any;
+
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
-    public httpData: MyData,
-    public storage: Storage
+    public httpData: MyData
   ) { }
   
   ngOnInit(){
-    let url = '/api/';
-    let str_NewsInquiry='str=' + '<Request>   <PageSize>6</PageSize>     <PageIndex>1</PageIndex>   </Request>';
-    let str_WeatherInquiry='str=' + '<Request> <currentCity>郑州市</currentCity> </Request>';
-    this.httpData.connect(url+'NewsInquiry',str_NewsInquiry).subscribe(
+    let url = '/api/NewsInquiry';
+    let str='str=' + '<Request>   <PageSize>1</PageSize>     <PageIndex>1</PageIndex>   </Request>';
+    this.httpData.connect(
+      url,str
+    ).subscribe(
       res => {
-        this.News = res.NewsInquiry;
-        this.storage.set('news',this.News);
+        console.log(res);
       }
     );
-
-    this.httpData.connect(url+'WeatherInquiry',str_WeatherInquiry).subscribe(
-      res => {
-        
-        res.WeatherInquiry.forEach(element => {
-          this.Weather = element;
-        });
-      }
-    );
-  }
-
-  new_detail(id){
-    this.navCtrl.push(DetailPage, { new_id: id });
   }
 
 }

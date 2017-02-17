@@ -1,17 +1,80 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="healthTab">
+      <ion-segment-button value="file">
+        健康档案
+      </ion-segment-button>
+      <ion-segment-button value="data">
+        健康数据
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <div [ngSwitch]="healthTab">
+    <ion-list *ngSwitchCase="'file'">
+      <button ion-button block>添加数据</button>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'data'">
+     <ion-segment [(ngModel)]="addHealthData">
+      <ion-segment-button value="temp">
+        体温
+      </ion-segment-button>
+      <ion-segment-button value="sugar">
+        血糖
+      </ion-segment-button>
+      <ion-segment-button value="fat">
+        体重
+      </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="addHealthData">
+      <ion-list *ngSwitchCase="'temp'">
+        <ion-item>
+          <ion-label >测得体温（℃）</ion-label>
+          <ion-input [style.text-align]="'right'" type="text"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label>测试时间</ion-label>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
+        </ion-item>
+        <button ion-button block>保存数据</button>
+      </ion-list>
+      <ion-list *ngSwitchCase="'sugar'">
+         <ion-item>
+          <ion-label >测得血糖(mmol/L)</ion-label>
+          <ion-input [style.text-align]="'right'" type="text"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label>测试时间</ion-label>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>测试时段</ion-label>
+           <ion-select [(ngModel)]="time">
+              <ion-option value="bf">早饭前</ion-option>
+              <ion-option value="mf">午饭前</ion-option>
+              <ion-option value="nf">晚饭前</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-button block>保存数据</button>
+      </ion-list>
+      <ion-list *ngSwitchCase="'fat'">
+        <ion-item>
+          <ion-label >测得体重(Kg)</ion-label>
+          <ion-input [style.text-align]="'right'" type="text"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label>测试时间</ion-label>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
+        </ion-item>
+        <button ion-button block>保存数据</button>
+      </ion-list>
+    </div>
+
+
+    </ion-list>
+  </div>
 </ion-content>

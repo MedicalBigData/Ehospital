@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
+import {Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 /*
   Generated class for the Register page.
@@ -13,10 +14,34 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  private register: FormGroup;
+
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+
+     this.register = this.formBuilder.group({
+      name: ['', [Validators.required,Validators.minLength(6)]],
+      pw1: ['', Validators.required],
+      pw2: ['', Validators.required],
+      accepted: [false,this.acceptedValidator.bind(this)]
+    });
+    
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  onSubmit(){
+    console.log(this.register.value);
+  }
+
+  acceptedValidator(control: FormControl): {[key: string]: boolean} {
+    if(control.value === false){
+      return {'invalid accepted': true};
+    }
+  }
+
+  goBack(){
+    this.navCtrl.pop();
+  }
 }

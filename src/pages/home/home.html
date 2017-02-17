@@ -41,11 +41,7 @@
   <span>常见慢性病</span>
   <ion-grid>
       <ion-row>
-        <ion-col width-20><ion-icon name="pin"></ion-icon><br>高血压</ion-col>
-        <ion-col width-20><ion-icon name="pin"></ion-icon><br>高血脂</ion-col>
-        <ion-col width-20><ion-icon name="pin"></ion-icon><br>糖尿病</ion-col>
-        <ion-col width-20><ion-icon name="pin"></ion-icon><br>冠心病</ion-col>
-        <ion-col width-20><ion-icon name="pin"></ion-icon><br>心脏病</ion-col>
+        <ion-col width-20 *ngFor="let item of CommonDisease"><ion-icon name="pin"></ion-icon><br>{{item.Value}}</ion-col>
       </ion-row>
     </ion-grid>
 </div>
@@ -62,5 +58,8 @@
       <span>{{new.CreatedDate}}</span>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>loading...</ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </div>
 </ion-content>

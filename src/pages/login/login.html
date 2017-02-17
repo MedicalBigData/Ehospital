@@ -11,23 +11,25 @@
   <div class="primary rt" (click)="goRegister()">注册</div>
   <div class="login_title primary">XX网</div>
 <div class="login_container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="login">
   <ion-list inset>
 
-  <ion-item>
-    <ion-label floating>手机号/XX网账号</ion-label>
-    <ion-input type="text" ></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>手机号/XX网账号</ion-label>
+      <ion-input formControlName="name" type="text" ></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>输入密码</ion-label>
-    <ion-input type="password" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>记住密码</ion-label>
-    <ion-checkbox color="dark" checked="true"></ion-checkbox>
-  </ion-item>
-  
-</ion-list>
-<button ion-button block (click)="gologin()">登陆</button>
+    <ion-item>
+      <ion-label floating>输入密码</ion-label>
+      <ion-input formControlName="password" type="password" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>记住密码</ion-label>
+      <ion-checkbox formControlName="remember" color="dark" checked="true"></ion-checkbox>
+    </ion-item>
+    
+  </ion-list>
+  <button ion-button block [disabled]="!login.valid">登陆</button>
+  </form>
 </div>
 </ion-content>

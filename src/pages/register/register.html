@@ -7,29 +7,39 @@
 <ion-content padding>
   <div class="register_title primary">XX网注册</div>
 <div class="register_container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="register">
   <ion-list inset>
-
   <ion-item>
     <ion-label floating>手机号/XX网账号</ion-label>
-    <ion-input type="text" ></ion-input>
+    <ion-input formControlName="name" type="text" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>输入密码</ion-label>
-    <ion-input type="password" ></ion-input>
+    <ion-input formControlName="pw1" type="password" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>确认密码</ion-label>
-    <ion-input type="password" ></ion-input>
+    <ion-input formControlName="pw2" type="password" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>免责条款</ion-label>
-    <ion-checkbox color="dark" checked="true"></ion-checkbox>
+    <ion-checkbox formControlName="accepted" color="dark" ></ion-checkbox>
   </ion-item>
   
 </ion-list>
-<button ion-button block (click)="register()">注册</button>
+  <div class="button_group">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-50><button ion-button  type="submit" [disabled]="!register.valid">提交注册</button></ion-col>
+        <ion-col width-50><button ion-button  type="button" outline  (click)="goBack()">返回登陆</button></ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  
+  </div>
+  </form>
 </div>
 </ion-content>

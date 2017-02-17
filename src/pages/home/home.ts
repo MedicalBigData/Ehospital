@@ -13,6 +13,8 @@ import { MyData } from '../../providers/my-data';
 export class HomePage implements OnInit{
   public News: any;
   public Weather: any;
+  public CommonDisease: any;
+  public cnt: number =1;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -22,7 +24,7 @@ export class HomePage implements OnInit{
   
   ngOnInit(){
     let url = '/api/';
-    let str_NewsInquiry='str=' + '<Request>   <PageSize>6</PageSize>     <PageIndex>1</PageIndex>   </Request>';
+    let str_NewsInquiry='str=' + '<Request>   <PageSize>2</PageSize>     <PageIndex>'+this.cnt+'</PageIndex>   </Request>';
     let str_WeatherInquiry='str=' + '<Request> <currentCity>郑州市</currentCity> </Request>';
     this.httpData.connect(url+'NewsInquiry',str_NewsInquiry).subscribe(
       res => {
@@ -39,10 +41,37 @@ export class HomePage implements OnInit{
         });
       }
     );
+
+    this.httpData.connect(url+'CommonDiseaseInquiry',str_WeatherInquiry).subscribe(
+      res => {
+          console.log(res);
+          this.CommonDisease = res.CommonDiseaseInquiry;
+      }
+    );
   }
 
   new_detail(id){
     this.navCtrl.push(DetailPage, { new_id: id });
+  }
+
+  doInfinite(infiniteScroll){
+    let url = '/api/';
+    let str_NewsInquiry='str=' + '<Request>   <PageSize>2</PageSize>     <PageIndex>'+(this.cnt+=2)+'</PageIndex>   </Request>';
+    this.httpData.connect(url+'NewsInquiry',str_NewsInquiry).subscribe(
+      res => {
+        if (res.NewsInquiry[0].MessageCode === '2') {
+          infiniteScroll.complete();
+          infiniteScroll.enable(false);
+        }else{
+          res.NewsInquiry.forEach(element => {
+            this.News.push(element);
+          });
+          this.storage.set('news',this.News);
+          infiniteScroll.complete();
+        }
+        
+      }
+    );
   }
 
 }

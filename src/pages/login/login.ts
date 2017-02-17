@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { TabsPage } from '../tabs/tabs';
 import { RegisterPage } from '../../pages/register/register';
@@ -14,7 +15,20 @@ import { RegisterPage } from '../../pages/register/register';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  private login: FormGroup;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private formBuilder: FormBuilder
+    ) {
+      this.login = this.formBuilder.group({
+      name: ['11111111111', [Validators.required,Validators.minLength(6)]],
+      password: ['11', Validators.required],
+      remember: [false]
+    });
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -24,7 +38,7 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 
-  gologin(){
+  onSubmit(){
     this.navCtrl.push(TabsPage);
   }
 }

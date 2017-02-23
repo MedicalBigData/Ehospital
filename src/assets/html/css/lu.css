@@ -1,0 +1,5 @@
+@charset "utf-8";
+/* CSS Document */
+.title_banner li a{ font-size:22px; padding:27px 27px;}
+.title_banner li{ width:20%; height:auto;}
+.title_banner{ padding-top:20px; height:50px; border-bottom:1px solid #ccc;}

@@ -3,8 +3,10 @@
 </div>
   <div class="home_head">
      <ion-row>
-       <ion-col width-50><button ion-button icon-left clear color="secondary"><ion-icon name="paper"></ion-icon><span>日常记录</span></button></ion-col>
-       <ion-col class="middle_line" width-50><button ion-button icon-left clear color="danger"><ion-icon name="man"></ion-icon><span>健康指导</span></button></ion-col>
+       <ion-col width-25><button ion-button icon-left clear color="secondary"><ion-icon name="paper"></ion-icon><span>日常记录</span></button></ion-col>
+       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="dark"><ion-icon name="pulse"></ion-icon><span>导入数据</span></button></ion-col>
+       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="danger"><ion-icon name="man"></ion-icon><span>健康指导</span></button></ion-col>
+       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="primary"><ion-icon name="alarm"></ion-icon><span>预约挂号</span></button></ion-col>
      </ion-row>
   </div>
   <!--天气-->
@@ -24,30 +26,27 @@
   <ion-slides pager>
 
   <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
-    <h2>广告 1</h2>
   </ion-slide>
 
   <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
-    <h2>广告 2</h2>
   </ion-slide>
 
   <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
-    <h2>广告 3</h2>
   </ion-slide>
 
 </ion-slides>
 <!--常见慢性病-->
 <div class="common_diseases"> 
-  <span>常见慢性病</span>
+  <span class="Title">常见慢病</span>
   <ion-grid>
       <ion-row>
-        <ion-col width-20 *ngFor="let item of CommonDisease"><ion-icon name="pin"></ion-icon><br>{{item.Value}}</ion-col>
+        <ion-col width-20 *ngFor="let item of CommonDisease" (click)="commonDisease(item.Code)"><ion-icon name="pin"></ion-icon><br>{{item.Value}}</ion-col>
       </ion-row>
     </ion-grid>
 </div>
 <!--资讯-->
 <div class="health_news">
-  <span>健康资讯</span>
+  <span class="Title">健康资讯</span>
   <ion-list >
     <ion-item *ngFor="let new of News" (click)="new_detail(new.ID)">
       <ion-thumbnail item-left>

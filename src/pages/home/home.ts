@@ -53,6 +53,9 @@ export class HomePage implements OnInit{
   new_detail(id){
     this.navCtrl.push(DetailPage, { new_id: id });
   }
+  commonDisease(id){
+    this.navCtrl.push(DetailPage, { disease_id: id });
+  }
 
   doInfinite(infiniteScroll){
     let url = '/api/';

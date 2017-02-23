@@ -8,7 +8,7 @@
 
 
 <ion-content padding>
-  <div class="primary rt" (click)="goRegister()">注册</div>
+  <div class="primary rt" ><button ion-button (click)="goRegister()" outline>注册</button></div>
   <div class="login_title primary">XX网</div>
 <div class="login_container">
   <form (ngSubmit)="onSubmit()" [formGroup]="login">

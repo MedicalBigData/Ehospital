@@ -7,12 +7,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>健康资讯</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding >
-<div [innerHTML] = "content"></div>
+  <div>
+    <ion-segment [(ngModel)]="tabs">
+      <ion-segment-button value="{{item.value}}" *ngFor="let item of segments">
+        {{item.name}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="tabs">
+    <div *ngSwitchCase="'abstract'"  [innerHTML] = "content1">
+        
+    </div>
+    <div *ngSwitchCase="'cause'"  [innerHTML] = "content2">
+
+    </div>
+    <div *ngSwitchCase="'symptom'"  [innerHTML] = "content3">
+
+    </div>
+    <div *ngSwitchCase="'diagnose'"  [innerHTML] = "content4">
+
+    </div>
+    <div *ngSwitchCase="'treat'"  [innerHTML] = "content5">
+
+    </div>
+  </div>
+  <div *ngIf="type === 1" [innerHTML] = "content">
+
+  </div>
 </ion-content>

@@ -96,7 +96,7 @@ export class LoginPage {
   presentLoading() {
     let loader = this.loadingCtrl.create({
       content: "Please wait...",
-      duration: 3000
+      duration: 30000
     });
     loader.present();
     return loader;

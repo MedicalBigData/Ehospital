@@ -3,35 +3,35 @@
 </div>
   <div class="home_head">
      <ion-row>
-       <ion-col width-25><button ion-button icon-left clear color="secondary"><ion-icon name="paper"></ion-icon><span>日常记录</span></button></ion-col>
-       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="dark"><ion-icon name="pulse"></ion-icon><span>导入数据</span></button></ion-col>
-       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="danger"><ion-icon name="man"></ion-icon><span>健康指导</span></button></ion-col>
-       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="primary"><ion-icon name="alarm"></ion-icon><span>预约挂号</span></button></ion-col>
+       <ion-col width-25><button ion-button icon-left clear color="secondary"><ion-icon class="micon" name="paper"></ion-icon></button><br><span>日常记录</span></ion-col>
+       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="dark"><ion-icon class="micon1" name="pulse"></ion-icon></button><br><span>导入数据</span></ion-col>
+       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="danger"><ion-icon class="micon2" name="man"></ion-icon></button><br><span>健康指导</span></ion-col>
+       <ion-col class="middle_line" width-25><button ion-button icon-left clear color="primary"><ion-icon class="micon3" name="alarm"></ion-icon></button><br><span>预约挂号</span></ion-col>
      </ion-row>
   </div>
   <!--天气-->
   <div class="home_wheather">
     <ion-grid>
       <ion-row>
-        <ion-col width-10><ion-icon name="sunny"></ion-icon></ion-col>
-        <ion-col width-10>{{Weather?.currenttemperature}}</ion-col>
-        <ion-col width-20>{{Weather?.weather}}<br>{{Weather?.currentCity}}</ion-col>
-        <ion-col width-20>{{Weather?.pm}}</ion-col>
-        <ion-col width-20>PM2.5<br>{{Weather?.pm|pm}}</ion-col>
-        <ion-col width-20><ion-icon name="pin"></ion-icon></ion-col>
+        <ion-col width-10 class="wheather_icon"><ion-icon name="sunny"></ion-icon></ion-col>
+        <ion-col width-20 class="temp">{{Weather?.currenttemperature}}</ion-col>
+        <ion-col width-25 class="wheather_city">{{Weather?.weather}}<br>{{Weather?.currentCity}}</ion-col>
+        <ion-col width-15 class="pm2_num">{{Weather?.pm}}</ion-col>
+        <ion-col width-20 class="pm2_type">PM2.5<br>{{Weather?.pm|pm}}</ion-col>
+        <ion-col width-10 class="pm2_icon"><ion-icon name="pin"></ion-icon></ion-col>
       </ion-row>
     </ion-grid>
   </div>
   <!--广告位轮播图-->
   <ion-slides pager>
 
-  <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
+  <ion-slide class="slide-image" style="background-image: url('assets/img/hospital.jpg');">
   </ion-slide>
 
-  <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
+  <ion-slide class="slide-image" style="background-image: url('assets/img/hospital.jpg');">
   </ion-slide>
 
-  <ion-slide class="slide-image" style="background-image: url('../../assets/img/hospital.jpg');">
+  <ion-slide class="slide-image" style="background-image: url('assets/img/hospital.jpg');">
   </ion-slide>
 
 </ion-slides>
@@ -40,7 +40,7 @@
   <span class="Title">常见慢病</span>
   <ion-grid>
       <ion-row>
-        <ion-col width-20 *ngFor="let item of CommonDisease" (click)="commonDisease(item.Code)"><ion-icon name="pin"></ion-icon><br>{{item.Value}}</ion-col>
+        <ion-col width-20 *ngFor="let item of CommonDisease" (click)="commonDisease(item.Code)"><div class="commonDisease_icon"><ion-icon name="pin"></ion-icon></div><span>{{item.Value}}</span></ion-col>
       </ion-row>
     </ion-grid>
 </div>
@@ -50,7 +50,7 @@
   <ion-list >
     <ion-item *ngFor="let new of News" (click)="new_detail(new.ID)">
       <ion-thumbnail item-left>
-        <img src="../../assets/img/hospital.jpg">
+        <img style ="width: 120px" src="assets/img/hospital.jpg">
       </ion-thumbnail>
       <h2>{{new.Title}}</h2>
       <p>{{new.Zhaiyao}}</p>

@@ -114,6 +114,7 @@ if(this.navParams.data.new_id != null){
   getHtml(url,index){
     let html =this.http.get(url).map ( response => response.text() );
       html.subscribe(res=>{
+        res = res.replace(/image\//g,'assets/html/image/');
         switch (index) {
           case 1:
             this.content1 = res;

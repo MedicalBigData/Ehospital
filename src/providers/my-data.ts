@@ -21,8 +21,9 @@ export class MyData {
       let opt: RequestOptions = new RequestOptions({
        headers: header
       })   
-    
-      return this.http.post(Url, str, opt )
+      let realUrl=Url.replace(/\/api/g,'');
+      console.log(realUrl);
+      return this.http.post("http://ehome.staging.topmd.cn:81/webservices/ehomewebservice.asmx"+realUrl, str, opt )
                     .map(res => 
                         eval('(' + this.delHtmlTag(res.text()) + ')')//转化为obj对象格式
                     );

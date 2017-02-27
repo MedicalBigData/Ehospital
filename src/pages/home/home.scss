@@ -2,12 +2,75 @@ page-home{
     ion-content.content-md{
         background-color: #F8F8F8;
     }
+    .home_head .micon,.home_head .micon1,.home_head .micon2,.home_head .micon3{
+        border-radius: 50%;
+        width: 1.4em;
+        height: 1.4em;
+        color: white;
+        line-height: 1.4em;
+        font-size: 3.2rem;
+        padding-left: 0.28em;
+    }
+    .home_head .micon{
+        background-color: #80ECA0;
+    }
+    .home_head .micon1{
+        background-color: #619BFD;
+    }
+    .home_head .micon2{
+        background-color: #F7B132;
+    }
+    .home_head .micon3{
+        background-color: #F3A0A0;
+    }
+    .wheather_icon{
+        color: #FFEF7B;
+        font-size: 4rem;
+    }
+    .temp{
+        font-size: 2em;
+        font-weight: 800;
+        line-height: 2em;
+    }
+    .wheather_city{
+        text-align: left;
+        line-height: 1.8em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .pm2_num{
+        font-size: 2em;
+        font-weight: 500;
+        line-height: 2em;
+    }
+    .pm2_type{
+        text-align: left;
+        line-height: 1.5em;
+    }
+    
+    .pm2_icon{
+        color: #FFEF7B;
+        font-size: 4rem;
+    }
+    .home_wheather ion-icon{
+        font-size: 3rem;
+    }
+    .commonDisease_icon{
+        width: 4rem;
+        height: 4rem;
+        color: white;
+        background-color: bisque;
+        border-radius: 50%;
+        line-height: 4rem;
+        margin: .5rem auto;
+    }
 }
 
 
 .home_img{
     width: 100%;
-    background-image: url('../../assets/img/hospital.jpg');
+    background-image: url('../assets/img/hospital.jpg');
     height: 200px;
     background-size: cover;
 }
@@ -43,7 +106,7 @@ ion-row>ion-col{
 
 ion-slides{
    margin: 1.5rem 0 0 0 ;
-   height: 70%;
+   height: 50%;
 }
 
 .common_diseases,.health_news{

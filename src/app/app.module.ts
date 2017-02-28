@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { DetailPage } from '../pages/detail/detail';
 import { RegisterPage } from '../pages/register/register';
 import { Pm } from '../pipes/pm';
+import { ImprovementPage } from '../pages/improvement/improvement'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { Pm } from '../pipes/pm';
     LoginPage,
     DetailPage,
     RegisterPage,
-    Pm
+    Pm,
+    ImprovementPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +38,8 @@ import { Pm } from '../pipes/pm';
     TabsPage,
     LoginPage,
     DetailPage,
-    RegisterPage
+    RegisterPage,
+    ImprovementPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage]
 })

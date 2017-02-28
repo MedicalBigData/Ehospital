@@ -14,8 +14,17 @@
 <ion-content>
   <div [ngSwitch]="healthTab">
     <ion-list *ngSwitchCase="'file'">
-      <button ion-button block>添加数据</button>
-
+      <button ion-button block (click)="addata()">添加数据</button>
+      <ion-list>
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/avatar-finn.png">
+          </ion-avatar>
+          <h2>Finn</h2>
+          <h3>Don't Know What To Do!</h3>
+          <p>I've had a pretty messed up day. If we just...</p>
+        </ion-item>
+      </ion-list>
     </ion-list>
 
     <ion-list *ngSwitchCase="'data'">
@@ -34,18 +43,18 @@
       <ion-list *ngSwitchCase="'temp'">
         <ion-item>
           <ion-label >测得体温（℃）</ion-label>
-          <ion-input [style.text-align]="'right'" type="text"></ion-input>
+          <ion-input #temp [style.text-align]="'right'" type="text"></ion-input>
         </ion-item> 
         <ion-item>
           <ion-label>测试时间</ion-label>
           <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
         </ion-item>
-        <button ion-button block>保存数据</button>
+        <button ion-button block (click)="saveTemp(temp.value)">保存数据</button>
       </ion-list>
       <ion-list *ngSwitchCase="'sugar'">
          <ion-item>
           <ion-label >测得血糖(mmol/L)</ion-label>
-          <ion-input [style.text-align]="'right'" type="text"></ion-input>
+          <ion-input #sugar [style.text-align]="'right'" type="text"></ion-input>
         </ion-item> 
         <ion-item>
           <ion-label>测试时间</ion-label>
@@ -53,24 +62,28 @@
         </ion-item>
         <ion-item>
           <ion-label>测试时段</ion-label>
-           <ion-select [(ngModel)]="time">
+           <ion-select #times [(ngModel)]="time">
               <ion-option value="bf">早饭前</ion-option>
               <ion-option value="mf">午饭前</ion-option>
               <ion-option value="nf">晚饭前</ion-option>
             </ion-select>
         </ion-item>
-        <button ion-button block>保存数据</button>
+        <button ion-button block (click)="saveSugar(sugar.value,times.value)">保存数据</button>
       </ion-list>
       <ion-list *ngSwitchCase="'fat'">
         <ion-item>
           <ion-label >测得体重(Kg)</ion-label>
-          <ion-input [style.text-align]="'right'" type="text"></ion-input>
+          <ion-input #fat [style.text-align]="'right'" type="text"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label >测得身高(Cm)</ion-label>
+          <ion-input #height [style.text-align]="'right'" type="text"></ion-input>
         </ion-item> 
         <ion-item>
           <ion-label>测试时间</ion-label>
           <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
         </ion-item>
-        <button ion-button block>保存数据</button>
+        <button ion-button block (click)="saveFat(fat.value,height.value)">保存数据</button>
       </ion-list>
     </div>
 

@@ -14,7 +14,7 @@
 
 
 <ion-content padding >
-  <div>
+  <div *ngIf="type === 2">
     <ion-segment [(ngModel)]="tabs">
       <ion-segment-button value="{{item.value}}" *ngFor="let item of segments">
         {{item.name}}

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Tabs  } from 'ionic-angular';
+import { Http } from '@angular/http';
 
 import { DetailPage } from '../../pages/detail/detail';
 import { MyData } from '../../providers/my-data';
+import { ContactPage } from '../contact/contact';
 
 @Component({
   selector: 'page-home',
@@ -19,8 +21,39 @@ export class HomePage implements OnInit{
     public navCtrl: NavController,
     public navParams: NavParams,
     public httpData: MyData,
-    public storage: Storage
-  ) { }
+    private http: Http,
+    public storage: Storage,
+    private tab: Tabs
+  ) { 
+    this.CommonDisease = [{
+        "code": "1",
+        "Value": "高血压",
+        "icon" : "podium",
+        "color": "#80ECA0"
+      },{
+        "code": "2",
+        "Value": "高血脂",
+        "icon" : "ice-cream",
+        "color": "#619BFD"
+      },{
+        "code": "3",
+        "Value": "糖尿病",
+        "icon" : "water",
+        "color": "#F7B132"
+      },{
+        "code": "4",
+        "Value": "冠心病",
+        "icon" : "medkit",
+        "color": "#e783ff"
+      },{
+        "code": "5",
+        "Value": "心脏病",
+        "icon" : "heart",
+        "color": "#F3A0A0"
+      }
+    ]
+    this.storage.set('CommonDisease',this.CommonDisease);
+   }
   
   ngOnInit(){
     let url = '/api/';
@@ -42,14 +75,8 @@ export class HomePage implements OnInit{
       }
     );
 
-    this.httpData.connect(url+'CommonDiseaseInquiry',str_WeatherInquiry).subscribe(
-      res => {
-          console.log(res);
-          this.CommonDisease = res.CommonDiseaseInquiry;
-      }
-    );
+      
   }
-
   new_detail(id){
     this.navCtrl.push(DetailPage, { new_id: id });
   }
@@ -77,4 +104,24 @@ export class HomePage implements OnInit{
     );
   }
 
+  goModel(a){
+    switch (a) {
+      case 1:
+        this.tab.select(1);
+        //this.navCtrl.push(ContactPage);
+        break;
+      case 2:
+        this.navCtrl.push(ContactPage,{tab:2});
+        break;
+      case 3:
+        this.tab.select(2);
+        break;
+      case 4:
+        this.tab.select(3);
+        break;
+    
+      default:
+        break;
+    }
+  }
 }

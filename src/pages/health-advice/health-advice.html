@@ -1,0 +1,31 @@
+<!--
+  Generated template for the HealthAdvice page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>健康指导</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngIf="advice==''">
+    <ion-card-header>
+      <b>您暂未有健康录入历史！</b>
+    </ion-card-header>
+ </ion-card>
+
+<ion-card *ngFor="let item of advice">
+  <ion-card-header>
+    健康诊断：{{item.Description}}
+  </ion-card-header>
+  <ion-card-content>
+    健康指导：{{item.Advice}}
+  </ion-card-content>
+</ion-card>
+</ion-content>

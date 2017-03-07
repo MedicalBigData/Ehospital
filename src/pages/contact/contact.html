@@ -12,17 +12,34 @@
 </ion-header>
 
 <ion-content>
+  <ion-card *ngIf="userFiles==''&&healthTab=='file'">
+            <ion-card-header>
+              <b>您暂未有健康录入数据！</b>
+            </ion-card-header>
+  </ion-card>
   <div [ngSwitch]="healthTab">
     <ion-list *ngSwitchCase="'file'">
       <button ion-button block (click)="addata()">添加数据</button>
       <ion-list>
-        <ion-item>
+        
+        <ion-item *ngFor="let item of userFiles">
           <ion-avatar item-left>
-            <img src="img/avatar-finn.png">
+            <img *ngIf="item.BloodSugarValue" src="assets/icon/bloodsugar.jpg">
+            <img *ngIf="item.weight" src="assets/icon/weight.jpg">
+            <img *ngIf="item.Value" src="assets/icon/temp.jpg">
           </ion-avatar>
-          <h2>Finn</h2>
-          <h3>Don't Know What To Do!</h3>
-          <p>I've had a pretty messed up day. If we just...</p>
+          <h3 *ngIf="item.MessageCode === '2'">未存在测量数据!</h3>
+          <h2 *ngIf="item.BloodSugarValue">血糖测量（正常）</h2>
+          <h3 *ngIf="item.BloodSugarValue">数值：{{item.BloodSugarValue}}</h3>
+          <h3 *ngIf="item.HoursAfterMeal== '1'">测量时间：早饭前</h3>
+          <h3 *ngIf="item.HoursAfterMeal== '2'">测量时间：午饭前</h3>
+          <h3 *ngIf="item.HoursAfterMeal== '3'">测量时间：晚饭前</h3>
+          <h3 *ngIf="item.weight">体重测量（正常）</h3>
+          <h3 *ngIf="item.weight">数值：{{item.weight}}</h3>
+          <h3 *ngIf="item.BMI">BMI指数:{{item.BMI}}</h3>
+          <h3 *ngIf="item.Value">体温测量（正常）</h3>
+          <h3 *ngIf="item.Value">数值：{{item.Value}}</h3>
+          <p>{{item.MonitorTime}}</p>
         </ion-item>
       </ion-list>
     </ion-list>
@@ -63,9 +80,9 @@
         <ion-item>
           <ion-label>测试时段</ion-label>
            <ion-select #times [(ngModel)]="time">
-              <ion-option value="bf">早饭前</ion-option>
-              <ion-option value="mf">午饭前</ion-option>
-              <ion-option value="nf">晚饭前</ion-option>
+              <ion-option value="1">早饭前</ion-option>
+              <ion-option value="2">午饭前</ion-option>
+              <ion-option value="3">晚饭前</ion-option>
             </ion-select>
         </ion-item>
         <button ion-button block (click)="saveSugar(sugar.value,times.value)">保存数据</button>

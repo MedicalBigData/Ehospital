@@ -56,8 +56,9 @@ if(this.navParams.data.new_id != null){
     );
 }else if(this.navParams.data.disease_id != null){
   this.type=2;
+  console.log(this.navParams.data.disease_id);
   switch (this.navParams.data.disease_id) {
-    case '01':
+    case '1':
       this.title = "高血压";
       this.getHtml('./assets/html/gxygaishu.html',1);
       this.getHtml('./assets/html/gxybingyin.html',2);
@@ -65,7 +66,7 @@ if(this.navParams.data.new_id != null){
       this.getHtml('./assets/html/gxyzhenduan.html',4);
       this.getHtml('./assets/html/gxyzhiliao.html',5);
       break;
-    case '02':
+    case '2':
       this.title = "高血脂";
       this.getHtml('./assets/html/gxzgaishu.html',1);
       this.getHtml('./assets/html/gxzbingyin.html',2);
@@ -73,7 +74,7 @@ if(this.navParams.data.new_id != null){
       this.getHtml('./assets/html/gxzzhenduan.html',4);
       this.getHtml('./assets/html/gxzzhiliao.html',5);
       break;
-    case '03':
+    case '3':
       this.title = "糖尿病";
       this.getHtml('./assets/html/tnbgaishu.html',1);
       this.getHtml('./assets/html/tnbbingyin.html',2);
@@ -81,7 +82,7 @@ if(this.navParams.data.new_id != null){
       this.getHtml('./assets/html/tnbzhenduan.html',4);
       this.getHtml('./assets/html/tnbzhiliao.html',5);
       break;
-    case '04':
+    case '4':
       this.title = "冠心病";
       this.getHtml('./assets/html/gxbgaishu.html',1);
       this.getHtml('./assets/html/gxbbingyin.html',2);
@@ -89,7 +90,7 @@ if(this.navParams.data.new_id != null){
       this.getHtml('./assets/html/gxbzhenduan.html',4);
       this.getHtml('./assets/html/gxbzhiliao.html',5);
       break;
-    case '05':
+    case '5':
       this.title = "心脏病";
       this.getHtml('./assets/html/xzbgaishu.html',1);
       this.getHtml('./assets/html/xzbbingyin.html',2);

@@ -132,3 +132,16 @@ ion-slides{
     font-weight: 800;
     font-family: '微软雅黑';
 }
+
+.health_news ion-item{
+    padding-left: 0px; 
+}
+.health_news ion-item h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    white-space: initial;
+}
+.health_news ion-item p,.health_news ion-item span{
+    text-align: right;
+    font-size: 1rem;
+}

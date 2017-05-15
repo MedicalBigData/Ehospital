@@ -12,6 +12,7 @@ import { RegisterPage } from '../pages/register/register';
 import { Pm } from '../pipes/pm';
 import { ImprovementPage } from '../pages/improvement/improvement'
 import { HealthAdvicePage } from '../pages/health-advice/health-advice'
+import { OppointmentPage } from '../pages/oppointment/oppointment'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HealthAdvicePage } from '../pages/health-advice/health-advice'
     RegisterPage,
     Pm,
     ImprovementPage,
-    HealthAdvicePage
+    HealthAdvicePage,
+    OppointmentPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -42,7 +44,8 @@ import { HealthAdvicePage } from '../pages/health-advice/health-advice'
     DetailPage,
     RegisterPage,
     ImprovementPage,
-    HealthAdvicePage
+    HealthAdvicePage,
+    OppointmentPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},Storage]
 })

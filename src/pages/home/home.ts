@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { DetailPage } from '../../pages/detail/detail';
 import { MyData } from '../../providers/my-data';
 import { ContactPage } from '../contact/contact';
+import { OppointmentPage } from '../oppointment/oppointment';
 
 @Component({
   selector: 'page-home',
@@ -117,7 +118,7 @@ export class HomePage implements OnInit{
         this.tab.select(2);
         break;
       case 4:
-        this.tab.select(3);
+       this.navCtrl.push(OppointmentPage);
         break;
     
       default:

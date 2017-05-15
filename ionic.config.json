@@ -7,6 +7,9 @@
     {
       "path": "/api",
       "proxyUrl": "http://ehome.staging.topmd.cn:81/webservices/ehomewebservice.asmx"
+    },{
+      "path":"/wxapi",
+      "proxyUrl":"http://10.10.0.25/index.php/api/api/"
     }
   ]
 }

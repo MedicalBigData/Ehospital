@@ -31,7 +31,7 @@ export class ContactPage implements OnInit{
     
   }
   ngOnInit(){
-    
+    console.log('oninit');
     switch (this.param.get('tab')) {
       case 1:
         this.healthTab = 'file';
@@ -43,46 +43,7 @@ export class ContactPage implements OnInit{
       default:
         break;
     }
-    this.storage.get('userInfo').then(
-      res => {
-        this.userInfo = res;
-        let url = '/api/';
-        let InquiryData = "str=<Request>    <CardNO>"+this.userInfo.UserNO+"</CardNO> </Request>";
-        this.httpData.connect(url+'WeightInquiry',InquiryData).subscribe(
-          res=>{
-            res.WeightInquiry.forEach(element => {
-              if (element.MessageCode != '2') {
-                this.userFiles.push(element);
-              }
-            });
-            // this.userFiles.concat(res.WeightInquiry);
-            // console.log(this.userFiles);
-          }
-        );
-        this.httpData.connect(url+'TemperatureInquiry',InquiryData).subscribe(
-          res=>{
-            res.TemperatureInquiry.forEach(element => {
-              if (element.MessageCode != '2') {
-                this.userFiles.push(element);
-              }
-              
-            });
-            // this.userFiles.concat(res.TemperatureInquiry);
-            // console.log(this.userFiles);
-          }
-        );
-        this.httpData.connect(url+'BloodSugarInquiry',InquiryData).subscribe(
-          res=>{
-            res.BloodSugarInquiry.forEach(element => {
-              if (element.MessageCode != '2') {
-                this.userFiles.push(element);
-              }
-            });
-            // this.userFiles.concat(res.BloodSugarInquiry) ;
-          }
-        );
-      }
-      );
+    
   }
   //体重录入
   saveFat(a,b){
@@ -110,6 +71,7 @@ export class ContactPage implements OnInit{
             this.httpData.connect(url+'WeightInsert',InsertData).subscribe(
           res => {
             loader.dismissAll();
+            this.getUserFiles();//刷新数据
             this.showToast(res.WeightInsert[0].MessageContent);
             if (res.WeightInsert[0].MessageCode === '0') {
                 this.healthTab = "file";
@@ -141,6 +103,7 @@ export class ContactPage implements OnInit{
             this.httpData.connect(url+'TemperatureInsert',InsertData).subscribe(
           res => {
             loader.dismissAll();
+            this.getUserFiles();//刷新数据
             this.showToast(res.TemperatureInsert[0].MessageContent);
             if (res.TemperatureInsert[0].MessageCode === '0') {
                 this.healthTab = "file";
@@ -174,6 +137,7 @@ export class ContactPage implements OnInit{
             this.httpData.connect(url+'BloodSugarInsert',InsertData).subscribe(
           res => {
             loader.dismissAll();
+            this.getUserFiles();//刷新数据
             this.showToast(res.BloodSugarInsert[0].MessageContent);
             if (res.BloodSugarInsert[0].MessageCode === '0') {
                 this.healthTab = "file";
@@ -207,6 +171,47 @@ export class ContactPage implements OnInit{
   }
 
   getUserFiles(){
-
+    //let loader = this.presentLoading();
+    this.storage.get('userInfo').then(
+      res => {
+        this.userInfo = res;
+        let url = '/api/';
+        let InquiryData = "str=<Request>    <CardNO>"+this.userInfo.UserNO+"</CardNO> </Request>";
+        this.httpData.connect(url+'WeightInquiry',InquiryData).subscribe(
+          res=>{
+            res.WeightInquiry.forEach(element => {
+              if (element.MessageCode != '2') {
+                this.userFiles.push(element);
+              }
+            });
+            // this.userFiles.concat(res.WeightInquiry);
+            // console.log(this.userFiles);
+          }
+        );
+        this.httpData.connect(url+'TemperatureInquiry',InquiryData).subscribe(
+          res=>{
+            res.TemperatureInquiry.forEach(element => {
+              if (element.MessageCode != '2') {
+                this.userFiles.push(element);
+              }
+              
+            });
+            // this.userFiles.concat(res.TemperatureInquiry);
+            // console.log(this.userFiles);
+          }
+        );
+        this.httpData.connect(url+'BloodSugarInquiry',InquiryData).subscribe(
+          res=>{
+            res.BloodSugarInquiry.forEach(element => {
+              
+              if (element.MessageCode != '2') {
+                this.userFiles.push(element);
+              }
+            });
+            // this.userFiles.concat(res.BloodSugarInquiry) ;
+          }
+        );
+      }
+      );
   }
 }

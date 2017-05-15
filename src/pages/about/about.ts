@@ -27,6 +27,7 @@ export class AboutPage {
         break;
     
       default:
+      alert('系统正在升级，该功能暂时无法提供！');
         break;
     }
   }

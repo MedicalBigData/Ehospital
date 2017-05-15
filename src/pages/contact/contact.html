@@ -19,7 +19,8 @@
   </ion-card>
   <div [ngSwitch]="healthTab">
     <ion-list *ngSwitchCase="'file'">
-      <button ion-button block (click)="addata()">添加数据</button>
+      <button ion-button (click)="addata()">添加数据</button>
+      <button ion-button outline (click)="getUserFiles()">刷新数据</button>
       <ion-list>
         
         <ion-item *ngFor="let item of userFiles">

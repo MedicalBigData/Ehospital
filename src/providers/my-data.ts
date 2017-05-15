@@ -15,18 +15,27 @@ export class MyData {
   constructor(public http: Http) {
 
   }
-  connect(Url: string, str: String): Observable<any>{
+  connect(Url: string, str: any): Observable<any>{
       let header = new Headers;
       header.append('Content-Type','application/x-www-form-urlencoded');
       let opt: RequestOptions = new RequestOptions({
        headers: header
       })   
-      let realUrl=Url.replace(/\/api/g,'');
-      console.log(realUrl);
-      return this.http.post("http://ehome.staging.topmd.cn:81/webservices/ehomewebservice.asmx"+realUrl, str, opt )
-                    .map(res => 
-                        eval('(' + this.delHtmlTag(res.text()) + ')')//转化为obj对象格式
-                    );
+      if(!Url.indexOf('/wxapi/')){
+        return this.http.post(Url, str, opt )
+                      .map(res => 
+                          {
+                            return JSON.parse(res.text());
+                          }
+                      );
+      }else{
+        let realUrl=Url.replace(/\/api/g,'');
+        return this.http.post("http://ehome.staging.topmd.cn:81/webservices/ehomewebservice.asmx"+realUrl, str, opt )
+                      .map(res => 
+                          eval('(' + this.delHtmlTag(res.text()) + ')')//转化为obj对象格式
+                      );
+      }
+      
   }
   delHtmlTag(str: string)
   {
